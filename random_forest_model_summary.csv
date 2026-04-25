@@ -1,0 +1,2 @@
+Model,Features,Accuracy,Max Features,Stop Words,n_estimators,Class Weight
+Random Forest,TF-IDF,0.7086330935251799,5000,english,200,balanced

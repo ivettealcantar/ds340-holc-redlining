@@ -1,37 +1,45 @@
 from pathlib import Path
 
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sentence_transformers import SentenceTransformer
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.model_selection import train_test_split
 
 BASE_DIR = Path(__file__).resolve().parent
 INPUT_PATH = BASE_DIR / "clean_holc_text.csv"
-SUMMARY_OUTPUT_PATH = BASE_DIR / "baseline_model_summary.csv"
-REPORT_OUTPUT_PATH = BASE_DIR / "baseline_classification_report.csv"
+
+SUMMARY_OUTPUT_PATH = BASE_DIR / "bert_model_summary.csv"
+REPORT_OUTPUT_PATH = BASE_DIR / "bert_classification_report.csv"
+
+MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 df = pd.read_csv(INPUT_PATH)
+df["combined_text"] = df["combined_text"].fillna("").astype(str)
+df = df[df["combined_text"].str.len() > 0].copy()
 
-X = df["combined_text"]
+X_text = df["combined_text"]
 y = df["grade"]
 
+encoder = SentenceTransformer(MODEL_NAME)
+embeddings = encoder.encode(
+    X_text.tolist(),
+    show_progress_bar=True,
+    convert_to_numpy=True,
+)
+
 X_train, X_test, y_train, y_test = train_test_split(
-    X,
+    embeddings,
     y,
     test_size=0.2,
     random_state=42,
-    stratify=y
+    stratify=y,
 )
 
-vectorizer = TfidfVectorizer(stop_words="english", max_features=5000)
-X_train_tfidf = vectorizer.fit_transform(X_train)
-X_test_tfidf = vectorizer.transform(X_test)
+model = LogisticRegression(max_iter=3000, class_weight="balanced")
+model.fit(X_train, y_train)
 
-model = LogisticRegression(max_iter=2000)
-model.fit(X_train_tfidf, y_train)
-
-y_pred = model.predict(X_test_tfidf)
+y_pred = model.predict(X_test)
 
 accuracy = accuracy_score(y_test, y_pred)
 report_dict = classification_report(y_test, y_pred, output_dict=True)
@@ -39,11 +47,11 @@ report_dict = classification_report(y_test, y_pred, output_dict=True)
 summary_df = pd.DataFrame([
     {
         "Model": "Logistic Regression",
-        "Features": "TF-IDF",
+        "Features": "BERT-style sentence embeddings",
         "Accuracy": accuracy,
-        "Max Features": 5000,
-        "Stop Words": "english",
-        "Max Iter": 2000,
+        "Embedding Model": MODEL_NAME,
+        "Max Iter": 3000,
+        "Class Weight": "balanced",
     }
 ])
 

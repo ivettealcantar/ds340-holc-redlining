@@ -1,15 +1,16 @@
 from pathlib import Path
 
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.model_selection import train_test_split
 
 BASE_DIR = Path(__file__).resolve().parent
 INPUT_PATH = BASE_DIR / "clean_holc_text.csv"
-SUMMARY_OUTPUT_PATH = BASE_DIR / "baseline_model_summary.csv"
-REPORT_OUTPUT_PATH = BASE_DIR / "baseline_classification_report.csv"
+
+SUMMARY_OUTPUT_PATH = BASE_DIR / "random_forest_model_summary.csv"
+REPORT_OUTPUT_PATH = BASE_DIR / "random_forest_classification_report.csv"
 
 df = pd.read_csv(INPUT_PATH)
 
@@ -21,14 +22,20 @@ X_train, X_test, y_train, y_test = train_test_split(
     y,
     test_size=0.2,
     random_state=42,
-    stratify=y
+    stratify=y,
 )
 
 vectorizer = TfidfVectorizer(stop_words="english", max_features=5000)
 X_train_tfidf = vectorizer.fit_transform(X_train)
 X_test_tfidf = vectorizer.transform(X_test)
 
-model = LogisticRegression(max_iter=2000)
+model = RandomForestClassifier(
+    n_estimators=200,
+    random_state=42,
+    class_weight="balanced",
+    n_jobs=-1,
+)
+
 model.fit(X_train_tfidf, y_train)
 
 y_pred = model.predict(X_test_tfidf)
@@ -38,12 +45,13 @@ report_dict = classification_report(y_test, y_pred, output_dict=True)
 
 summary_df = pd.DataFrame([
     {
-        "Model": "Logistic Regression",
+        "Model": "Random Forest",
         "Features": "TF-IDF",
         "Accuracy": accuracy,
         "Max Features": 5000,
         "Stop Words": "english",
-        "Max Iter": 2000,
+        "n_estimators": 200,
+        "Class Weight": "balanced",
     }
 ])
 

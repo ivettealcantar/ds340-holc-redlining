@@ -1,0 +1,2 @@
+Model,Features,Accuracy,Max Iter,Class Weight,Feature Count
+Logistic Regression,Keyword features,0.6129496402877698,3000,balanced,62

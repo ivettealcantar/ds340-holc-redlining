@@ -1,0 +1,6 @@
+Model,Features,Accuracy
+Logistic Regression,TF-IDF,0.711
+Logistic Regression,TF-IDF + balanced weights,0.689
+Logistic Regression,Keyword features,0.613
+Random Forest,TF-IDF,0.709
+Logistic Regression,BERT-style sentence embeddings,0.614

@@ -1,0 +1,2 @@
+Model,Features,Accuracy,Max Features,Stop Words,Max Iter
+Logistic Regression,TF-IDF,0.7107913669064748,5000,english,2000
