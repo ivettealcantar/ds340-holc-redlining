@@ -93,8 +93,15 @@ Install dependencies with:
 python3 -m pip install -r requirements.txt
 ```
 
+Additional packages used by this project but not currently listed in `requirements.txt` include:
+
+```bash
+python3 -m pip install geopandas matplotlib sentence-transformers
+```
+
 ## Notes
 
 - Several generated GeoJSON files in this repository are large.
 - The tract-level regressions are baseline association models.
 - The lecture-style raw DistilBERT script `bert_lec.py` is included for reference, but the lighter `bert_grade_model.py` is the main BERT-style model used in the project.
+- `merge_places.py` currently points to a local PLACES CSV path and may need that path updated before rerunning on another machine.
