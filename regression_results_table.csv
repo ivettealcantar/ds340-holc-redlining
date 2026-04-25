@@ -1,0 +1,5 @@
+Outcome,Rows_Used,Coefficient,Intercept,MSE,R2
+depression_prev,12161.000,0.280,19.886,22.400,0.002
+diabetes_prev,12161.000,1.265,9.158,25.301,0.047
+obesity_prev,12161.000,2.290,25.928,83.303,0.044
+access2_prev,12161.000,2.969,2.971,44.799,0.107

@@ -1,0 +1,5 @@
+Outcome,Rows Used,Coefficient,Intercept,MSE,R²
+Depression prevalence,12161,0.28,19.886,22.4,0.002
+Diabetes prevalence,12161,1.265,9.158,25.301,0.047
+Obesity prevalence,12161,2.29,25.928,83.303,0.044
+Lack of health insurance,12161,2.969,2.971,44.799,0.107
