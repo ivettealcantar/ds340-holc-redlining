@@ -96,5 +96,5 @@ python3 -m pip install -r requirements.txt
 ## Notes
 
 - Several generated GeoJSON files in this repository are large.
-- The tract-level regressions are baseline association models and should not be interpreted as causal estimates.
+- The tract-level regressions are baseline association models.
 - The lecture-style raw DistilBERT script `bert_lec.py` is included for reference, but the lighter `bert_grade_model.py` is the main BERT-style model used in the project.
