@@ -61,8 +61,10 @@ X_test_tfidf = vectorizer.transform(X_test)
 model = LogisticRegression(max_iter=2000, class_weight="balanced")
 model.fit(X_train_tfidf, y_train)
 
+y_train_pred = model.predict(X_train_tfidf)
 y_pred = model.predict(X_test_tfidf)
 
+train_accuracy = accuracy_score(y_train, y_train_pred)
 accuracy = accuracy_score(y_test, y_pred)
 report_dict = classification_report(y_test, y_pred, output_dict=True)
 
@@ -70,6 +72,7 @@ summary_df = pd.DataFrame([
     {
         "Model": "Logistic Regression",
         "Features": "TF-IDF + balanced weights",
+        "Train Accuracy": train_accuracy,
         "Accuracy": accuracy,
         "Max Features": MAX_FEATURES,
         "Stop Words": "english",
@@ -84,7 +87,8 @@ report_df = report_df.rename(columns={"index": "Label"})
 summary_df.to_csv(SUMMARY_OUTPUT_PATH, index=False)
 report_df.to_csv(REPORT_OUTPUT_PATH, index=False)
 
-print("Accuracy:", accuracy)
+print("Train Accuracy:", train_accuracy)
+print("Test Accuracy:", accuracy)
 print("\nClassification Report:\n")
 print(classification_report(y_test, y_pred))
 

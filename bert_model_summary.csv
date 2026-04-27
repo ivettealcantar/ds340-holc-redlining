@@ -1,2 +1,2 @@
-Model,Features,Accuracy,Embedding Model,Max Iter,Class Weight
-Logistic Regression,BERT-style sentence embeddings,0.6136690647482015,sentence-transformers/all-MiniLM-L6-v2,3000,balanced
+Model,Features,Train Accuracy,Accuracy,Embedding Model,Max Iter,Class Weight
+Logistic Regression,BERT-style sentence embeddings,0.6619287513494062,0.6136690647482015,sentence-transformers/all-MiniLM-L6-v2,3000,balanced

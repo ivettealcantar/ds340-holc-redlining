@@ -1,2 +1,2 @@
-Model,Features,Accuracy,Max Features,Stop Words,Max Iter,Class Weight
-Logistic Regression,TF-IDF + balanced weights,0.6892086330935252,5000,english,2000,balanced
+Model,Features,Train Accuracy,Accuracy,Max Features,Stop Words,Max Iter,Class Weight
+Logistic Regression,TF-IDF + balanced weights,0.8089240734077006,0.6892086330935252,5000,english,2000,balanced

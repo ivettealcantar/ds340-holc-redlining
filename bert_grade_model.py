@@ -39,8 +39,10 @@ X_train, X_test, y_train, y_test = train_test_split(
 model = LogisticRegression(max_iter=3000, class_weight="balanced")
 model.fit(X_train, y_train)
 
+y_train_pred = model.predict(X_train)
 y_pred = model.predict(X_test)
 
+train_accuracy = accuracy_score(y_train, y_train_pred)
 accuracy = accuracy_score(y_test, y_pred)
 report_dict = classification_report(y_test, y_pred, output_dict=True)
 
@@ -48,6 +50,7 @@ summary_df = pd.DataFrame([
     {
         "Model": "Logistic Regression",
         "Features": "BERT-style sentence embeddings",
+        "Train Accuracy": train_accuracy,
         "Accuracy": accuracy,
         "Embedding Model": MODEL_NAME,
         "Max Iter": 3000,
@@ -61,7 +64,8 @@ report_df = report_df.rename(columns={"index": "Label"})
 summary_df.to_csv(SUMMARY_OUTPUT_PATH, index=False)
 report_df.to_csv(REPORT_OUTPUT_PATH, index=False)
 
-print("Accuracy:", accuracy)
+print("Train Accuracy:", train_accuracy)
+print("Test Accuracy:", accuracy)
 print("\nClassification Report:\n")
 print(classification_report(y_test, y_pred))
 
