@@ -7,7 +7,9 @@ OUTPUT_PATH = BASE_DIR / "keyword_classification_report_pretty.csv"
 
 df = pd.read_csv(INPUT_PATH)
 
-keep_labels = ["A", "B", "C", "D", "accuracy", "macro avg", "weighted avg"]
+# Keep only class rows plus summary rows. Accuracy is a single scalar metric
+# and should be reported separately rather than as a fake class row.
+keep_labels = ["A", "B", "C", "D", "macro avg", "weighted avg"]
 df = df[df["Label"].isin(keep_labels)].copy()
 
 df = df.rename(columns={
@@ -19,7 +21,6 @@ df = df.rename(columns={
 })
 
 label_map = {
-    "accuracy": "Accuracy",
     "macro avg": "Macro Avg",
     "weighted avg": "Weighted Avg",
 }

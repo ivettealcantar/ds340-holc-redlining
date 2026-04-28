@@ -69,7 +69,6 @@ This project studies whether historical HOLC neighborhood descriptions predict H
 - `make_tract_keyword_exposure_dataset.py`: constructs tract-level keyword exposure variables
 - `run_places_regression.py`: runs PLACES regressions using `weighted_grade_score`
 - `run_keyword_exposure_regression.py`: runs exploratory keyword-exposure regressions
-- `plot_places_regression_coefficients.py`: creates the regression coefficient figure
 
 ## Main Outputs
 
@@ -83,7 +82,6 @@ This project studies whether historical HOLC neighborhood descriptions predict H
 - `top_predictive_words_by_grade.csv`
 - `regression_results_table.csv`
 - `keyword_exposure_regression_results.csv`
-- `places_regression_coefficients.png`
 
 ## Setup
 
@@ -103,5 +101,4 @@ python3 -m pip install geopandas matplotlib sentence-transformers
 
 - Several generated GeoJSON files in this repository are large.
 - The tract-level regressions are baseline association models.
-- The lecture-style raw DistilBERT script `bert_lec.py` is included for reference, but the lighter `bert_grade_model.py` is the main BERT-style model used in the project.
 - `merge_places.py` currently points to a local PLACES CSV path and may need that path updated before rerunning on another machine.

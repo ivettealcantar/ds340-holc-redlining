@@ -2,8 +2,8 @@ from pathlib import Path
 import pandas as pd
 
 BASE_DIR = Path(__file__).resolve().parent
-INPUT_PATH = BASE_DIR / "bert_classification_report.csv"
-OUTPUT_PATH = BASE_DIR / "bert_classification_report_pretty.csv"
+INPUT_PATH = BASE_DIR / "improved_classification_report.csv"
+OUTPUT_PATH = BASE_DIR / "improved_classification_report_pretty.csv"
 
 df = pd.read_csv(INPUT_PATH)
 
