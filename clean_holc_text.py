@@ -51,4 +51,6 @@ print(clean_df["grade"].value_counts(dropna=False))
 
 clean_df.to_csv(output_path, index=False)
 print("Saved cleaned file to:", output_path)
-
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.

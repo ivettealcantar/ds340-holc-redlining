@@ -70,3 +70,6 @@ merged.drop(columns="geometry").to_csv(OUTPUT_CSV_PATH, index=False)
 
 print(f"\nSaved GeoJSON to: {OUTPUT_PATH}")
 print(f"Saved CSV to: {OUTPUT_CSV_PATH}")
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.

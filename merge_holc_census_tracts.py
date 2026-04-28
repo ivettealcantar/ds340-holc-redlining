@@ -60,3 +60,6 @@ matched_merged.to_file(MATCHED_OUTPUT_PATH, driver="GeoJSON")
 
 print(f"\nSaved full enriched crosswalk to: {FULL_OUTPUT_PATH}")
 print(f"Saved matched-only analysis file to: {MATCHED_OUTPUT_PATH}")
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.

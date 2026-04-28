@@ -16,3 +16,6 @@ print(merged[["area_id", "city_geo", "state_geo", "grade_geo", "grade_text"]].he
 merged.to_file("holc_text_geo.geojson", driver="GeoJSON")
 print(merged.columns.tolist())
 print("Grade mismatches:", (merged["grade_geo"] != merged["grade_text"]).sum())
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.

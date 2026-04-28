@@ -45,3 +45,6 @@ ax.legend()
 plt.tight_layout()
 plt.savefig(OUTPUT_PATH, dpi=300)
 print(f"Saved figure to: {OUTPUT_PATH}")
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.

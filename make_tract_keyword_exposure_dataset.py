@@ -105,3 +105,6 @@ print(tract_summary.head())
 
 tract_summary.to_csv(OUTPUT_PATH, index=False)
 print(f"\nSaved tract keyword exposure dataset to: {OUTPUT_PATH}")
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.

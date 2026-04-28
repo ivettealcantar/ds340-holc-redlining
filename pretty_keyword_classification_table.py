@@ -39,3 +39,6 @@ df.to_csv(OUTPUT_PATH, index=False)
 
 print(df)
 print(f"\nSaved pretty table to: {OUTPUT_PATH}")
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.

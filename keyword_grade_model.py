@@ -111,3 +111,6 @@ print(X[[col for col in X.columns if col.endswith("_total")]].sum().sort_values(
 
 print(f"\nSaved summary to: {SUMMARY_OUTPUT_PATH}")
 print(f"Saved classification report to: {REPORT_OUTPUT_PATH}")
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.

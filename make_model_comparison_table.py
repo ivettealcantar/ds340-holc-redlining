@@ -29,3 +29,6 @@ combined.to_csv(output_path, index=False)
 
 print(combined)
 print(f"\nSaved model comparison table to: {output_path}")
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.

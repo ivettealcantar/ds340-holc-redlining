@@ -97,3 +97,6 @@ print_top_words(model, vectorizer, top_n=TOP_N_WORDS)
 
 print(f"\nSaved summary to: {SUMMARY_OUTPUT_PATH}")
 print(f"Saved classification report to: {REPORT_OUTPUT_PATH}")
+# AI-use note:
+# Portions of this script were developed with AI assistance for code refinement,
+# debugging, and parameter adjustment.
